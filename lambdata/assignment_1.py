@@ -2,6 +2,7 @@
 
 import pandas as pd
 import numpy as np
+import random
 
 us_state_abbrev = {
     'Alabama': 'AL',
@@ -78,4 +79,72 @@ def date_cleaner(date):
 
 
 print(state_cleaner('Illinois'))
+
+"""Class Based Programming"""
+
+class ExoticAnimals:
+    def __init__(self, name,  height, weight, color, legs, species, mammal=True):
+        self.name = name
+        self.height = height
+        self.weight = weight
+        self.color = color
+        self.legs = legs
+        self.species = species
+        self.mammal = mammal
+        
+    def move(self, distance, direction):
+        return f"{self.name} travels {distance} meters in {direction} direction!"
+    
+    def eat(self, food):
+        return f"Yum, yum! I love {food}!"
+
+"""Inheritance Class"""
+
+names = ["Roger", "Stuart", "Buddy", "Johnson", "Tommy"]
+colors = ["Red", "Green", "Yellow", "Blue"]
+species_names = ["Bird", "Rodent", "Reptile", "Fish", "Canine"]
+
+class Anaconda(ExoticAnimals):
+    """height and weight is an int"""
+    def __init__(self, name,  height, weight, constrictor, color, legs=0, species="snake", mammal=False):
+        super().__init__(name, height, weight, color, legs, species, mammal)
+        self.constrictor = constrictor
+    
+    def move(self, distance, direction):
+        return f"{self.name} sliters {distance} meters in {direction} direction!"
+
+
+def create_animal():
+    print("Welcome to the program! Please provdie the following info:")
+    n = input("What is your animal's name?")
+    h = input("What is your animal's height?")
+    w = input("What is your animal's weight?")
+    c = input("What is your animal's color?")
+    l = input("What is your animal's number of legs?")
+    s = input("What is your animal's species?")
+    m = input("Is your animal a mammal? True or False")
+    dist = input("How far will your animal travel?")
+    dirc = input("Which direction will your animal go?")
+    user_animal = ExoticAnimals(name=n, height=h, weight=w, color=c, legs=l, species=s, mammal=m)
+   
+    print(user_animal.move(dist, dirc))
+
+def lots_of_animals(n):
+    animals = []
+    while n > 0:
+        a_name = random.choice(names)
+        a_height = random.randint(5, 501)
+        a_weight = random.randint(2, 2001)
+        a_color = random.choice(colors)
+        a_legs = random.ranint(0, 5)
+        a_specices = random.choice(species_names)
+        if a_specices == "Rodents" or a_species == "Canine":
+            a_mammal = True
+        else:
+            a_mammal = False
+
+        a_animal = ExoticAnimals(a_name, a_height, a_weight, a_color, a_legs, a_specices, a_mammal)
+        animals.append(a_animal)
+        n = n-1
+    return animals
 
